@@ -74,7 +74,7 @@ public class JapaneseTheaterUI {
 
 					} else {
 
-						// 프로그램 종료プログラム終了
+						// 프로그램 종료
 						System.out.println("プログラム終了");
 						return;
 
@@ -588,7 +588,7 @@ public class JapaneseTheaterUI {
 				break;
 
 			}
-		} // while 
+		} // while  
 
 		System.out.print("pw: ");
 		String pw = sc.next();

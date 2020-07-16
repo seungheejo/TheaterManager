@@ -588,7 +588,7 @@ public class JapaneseTheaterUI {
 				break;
 
 			}
-		} // while  
+		} // while 
 
 		System.out.print("pw: ");
 		String pw = sc.next();

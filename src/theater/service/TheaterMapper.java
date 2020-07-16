@@ -9,70 +9,70 @@ import theater.vo.TheaterMember;
 
 public interface TheaterMapper {
 
-	// メンバー登録 insert
+	// 회원 등록 insert
 	public int insertMember(TheaterMember tm);
 
-	// メンバーの予約 insert
+	// 회원 예약 insert
 	public int memberReserveTicket(Reservation r);
 
-	// 予約のキャンセル delete
+	// 예약 취소 delete
 	public int deleteReservedTicket(int reservenum);
 
-	// ノンメンバーの予約 insert
+	// 비회원 예약 insert
 	public int nonmemberReserveTicket(Reservation r);
 
-	// 予約の確認 select
+	// 예약 확인 select
 	public List<Reservation> reservationInfo();
 
-	// ID別に予約した映画の情報 select
+	// ID별 예약한 영화 정보 select
 	public List<Reservation> idReservationInfo(String id);
 
-	// 全ての映画の上映情報 select
+	// 모든 영화의 상영정보 select
 	public List<Movie> getShowingInfo();
 
-	// プチョン映画館で上映中の映画情報 select
+	// 부천 영화관 영화 상영정보 select
 	public List<Movie> getShowingBucheonInfo();
 
-	// インチョン映画館で上映中の映画情報 select
+	// 인천 영화관 영화 상영정보 select
 	public List<Movie> getShowingIncheonInfo();
 
-	// ヨンサン映画館で上映中の映画情報 select
+	// 용산 영화관 영화 상영정보 select
 	public List<Movie> getShowingYongsanInfo();
 
-	// ワンシムニ映画館で上映中の映画情報 select
+	// 왕십리 영화관 영화 상영정보 select
 	public List<Movie> getShowingWangsibriInfo();
 
-	// プチョン映画館の座席情報 select
+	// 부천 영화관 좌석정보 select
 	public List<SeatInfo> getBucheonSeatsInfo();
 
-	// インチョン映画館の座席情報 select
+	// 인천 영화관 좌석정보 select
 	public List<SeatInfo> getIncheonSeatsInfo();
 
-	// ヨンサン映画館の座席情報 select
+	// 용산 영화관 좌석정보 select
 	public List<SeatInfo> getYongsanSeatsInfo();
 
-	// ワンシムニ映画館の座席情報 select
+	// 왕십리 영화관 좌석정보 select
 	public List<SeatInfo> getWangsibriSeatsInfo();
 
-	// プチョン映画館の座席情報のアップデート update
+	// 부천 영화관 좌석정보 업데이트 update
 	public int updateBucheonBookingInfo(String bookingInfo);
 
-	// インチョン映画館の座席情報のアップデート update
+	// 인천 영화관 좌석정보 업데이트 update
 	public int updateIncheonBookingInfo(String bookingInfo);
 
-	// ヨンサン映画館の座席情報のアップデート update
+	// 용산 영화관 좌석정보 업데이트 update
 	public int updateYongsanBookingInfo(String bookingInfo);
 
-	// ワンシムニ映画館の座席情報のアップデート update
+	// 왕십리 영화관 좌석정보 업데이트 update
 	public int updateWangsibriBookingInfo(String bookingInfo);
 
-	// ジャンル別の映画情報 select
+	// 장르별 영화정보 select
 	public List<Movie> getMovieRecommend(String genre);
 
-	// 全てのメンバーの情報 select
+	// 모든 회원의 정보 select
 	public List<TheaterMember> getTheaterMemberInfo();
 
-	// 脱退 delete
+	// 삭제 delete
 	public int deleteMember(String id);
 
 }

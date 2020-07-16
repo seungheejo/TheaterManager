@@ -5,7 +5,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="theater.service.TheaterMapper">
-	<!-- メンバー登録 insert -->
+	<!-- 회원 등록 insert -->
 	<insert id="insertMember" parameterType="theatermember">
 		INSERT
 		INTO theaterMember(memberNum, name, grade, email, phoneNum, id, PW,
@@ -14,7 +14,7 @@
 		#{id}, #{PW}, #{points})
 	</insert>
 
-	<!-- メンバーの予約 insert -->
+	<!-- 회원 예약 insert -->
 	<insert id="memberReserveTicket">
 		INSERT
 		INTO reservation(reserveNum, movieTitle, theaterName, chosenSeat,
@@ -23,13 +23,13 @@
 		#{ticketPrice}, #{id}, #{email}, #{genre})
 	</insert>
 
-	<!-- 予約のキャンセル delete -->
+	<!-- 예약 취소 delete -->
 	<delete id="deleteReservedTicket">
 		DELETE reservation
 		WHERE reservenum = #{reservenum}
 	</delete>
 
-	<!-- ノンメンバーの予約 insert -->
+	<!-- 비회원 예약 insert -->
 	<insert id="nonmemberReserveTicket">
 		INSERT
 		INTO reservation(reserveNum, movieTitle, theaterName, chosenSeat,
@@ -38,123 +38,123 @@
 		#{ticketPrice}, #{email}, #{genre})
 	</insert>
 
-	<!-- 予約の確認 select -->
+	<!-- 예약 확인 select -->
 	<select id="reservationInfo" resultType="reservation">
 		SELECT *
 		FROM reservation
 	</select>
 
-	<!-- ID別に予約した映画の情報 select -->
+	<!-- ID별 예약한 영화의 정보 select -->
 	<select id="idReservationInfo" resultType="reservation">
 		SELECT *
 		FROM reservation
 		WHERE id = #{id}
 	</select>
 
-	<!-- 全ての映画の上映情報 select -->
+	<!-- 모든 영화의 상영정보 select -->
 	<select id="getShowingInfo" resultType="movie">
 		SELECT *
 		FROM movie
 	</select>
 
-	<!-- プチョン映画館で上映中の映画情報 select -->
+	<!-- 부천 영화관 영화 상영정보 select -->
 	<select id="getShowingBucheonInfo" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE theaterName like '%부천%'
 	</select>
 
-	<!-- インチョン映画館で上映中の映画情報 select -->
+	<!-- 인천 영화관 영화 상영정보 select -->
 	<select id="getShowingIncheonInfo" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE theaterName like '%인천%'
 	</select>
 
-	<!-- ヨンサン映画館で上映中の映画情報 select -->
+	<!-- 용산 영화관 영화 상영정보 select -->
 	<select id="getShowingYongsanInfo" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE theaterName like '%용산%'
 	</select>
 
-	<!-- ワンシムニ映画館で上映中の映画情報 select -->
+	<!-- 왕십리 영화관 영화 상영정보 select -->
 	<select id="getShowingWangsibriInfo" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE theaterName like '%왕십리%'
 	</select>
 
-	<!-- プチョン映画館の座席情報 select -->
+	<!-- 부천 영화관 좌석정보 select -->
 	<select id="getBucheonSeatsInfo" resultType="seatinfo">
 		SELECT *
 		FROM seatinfo
 		WHERE theaterName like '%부천%'
 	</select>
 
-	<!-- インチョン映画館の座席情報 select -->
+	<!-- 인천 영화관 좌석정보 select -->
 	<select id="getIncheonSeatsInfo" resultType="seatinfo">
 		SELECT *
 		FROM seatinfo
 		WHERE theaterName like '%인천%'
 	</select>
 
-	<!-- ヨンサン映画館の座席情報 select -->
+	<!-- 용산 영화관 좌석정보 select -->
 	<select id="getYongsanSeatsInfo" resultType="seatinfo">
 		SELECT *
 		FROM seatinfo
 		WHERE theaterName like '%용산%'
 	</select>
 
-	<!-- ワンシムニ映画館の座席情報 select -->
+	<!-- 왕십리 영화관 좌석정보 select -->
 	<select id="getWangsibriSeatsInfo" resultType="seatinfo">
 		SELECT *
 		FROM seatinfo
 		WHERE theaterName like '%왕십리%'
 	</select>
 
-	<!-- プチョン映画館の座席情報のアップデート update -->
+	<!-- 부천 영화관 좌석정보 업데이트 update -->
 	<update id="updateBucheonBookingInfo">
 		UPDATE seatinfo
 		SET bookingInfo = #{bookingInfo}
 		WHERE seats = #{seats} AND theaterName like '%부천%'
 	</update>
 
-	<!-- インチョン映画館の座席情報のアップデート update -->
+	<!-- 인천 영화관 좌석정보 업데이트 update -->
 	<update id="updateIncheonBookingInfo">
 		UPDATE seatinfo
 		SET bookingInfo = #{bookingInfo}
 		WHERE seats = #{seats} AND theaterName like '%인천%'
 	</update>
 
-	<!-- ヨンサン映画館の座席情報のアップデート update -->
+	<!-- 용산 영화관 좌석정보 업데이트 update -->
 	<update id="updateYongsanBookingInfo">
 		UPDATE seatinfo
 		SET bookingInfo = #{bookingInfo}
 		WHERE seats = #{seats} AND theaterName like '%용산%'
 	</update>
 
-	<!-- ワンシムニ映画館の座席情報のアップデート update -->
+	<!-- 왕십리 영화관 좌석정보 업데이트 update -->
 	<update id="updateWangsibriBookingInfo">
 		UPDATE seatinfo
 		SET bookingInfo = #{bookingInfo}
 		WHERE seats = #{seats} AND theaterName like '%왕십리%'
 	</update>
 
-	<!-- ジャンル別の映画情報 select -->
+	<!-- 장르별 영화정보 select -->
 	<select id="getMovieRecommend" resultType="movie">
 		SELECT *
 		FROM movie
 		WHERE genre = #{genre}
 	</select>
 
-	<!-- 全てのメンバーの情報 select -->
+	<!-- 모든 회원의 정보 select -->
 	<select id="getTheaterMemberInfo" resultType="theatermember">
 		SELECT *
 		FROM theaterMember
 	</select>
 
-	<!-- 脱退 delete -->
+	<!-- 삭제 delete -->
 	<delete id="deleteMember">
 		DELETE theaterMember
 		WHERE id = #{id} <!-- idが固有値なので-->

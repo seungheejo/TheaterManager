@@ -15,7 +15,7 @@ public class Reservation {
 		
 	}
 	
-	//メンバーの予約
+	//회원 예약
 	public Reservation(String movieTitle, String theaterName, String chosenSeat, int ticketPrice, String id,
 			String email, String genre) {
 		super();
@@ -28,7 +28,7 @@ public class Reservation {
 		this.genre = genre;
 	}
 	
-	//ノンメンバーの予約
+	//비회원 
 	public Reservation(String movieTitle, String theaterName, String chosenSeat, int ticketPrice,
 			String email, String genre) {
 		super();

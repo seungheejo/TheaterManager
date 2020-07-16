@@ -34,7 +34,7 @@ public class JapaneseTheaterUI {
 
 			switch (select) {
 
-			// メンバーの予約の場合
+			// 회원 예약일 경우
 			case 1:
 				System.out.println("=====================================");
 				System.out.println("=================ログイン================");
@@ -47,7 +47,7 @@ public class JapaneseTheaterUI {
 				String pw = sc.next();
 				sc.nextLine();
 
-				// ログインの成功の場合
+				// 로그인 성공할 경우
 				if (checkLogin(id, pw) == true) {
 
 					System.out.println("ログインできました");
@@ -62,19 +62,19 @@ public class JapaneseTheaterUI {
 
 					if (menu == 1) {
 
-						// 映画のおすすめ
+						// 영화 추천
 						recommendMovie(id);
-						// 映画予約
+						// 영화 예약
 						reservation(select);
 
 					} else if (menu == 2) {
 
-						// 脱退
+						// 탈퇴
 						withdrawal(id);
 
 					} else {
 
-						// プログラム終了
+						// 프로그램 종료プログラム終了
 						System.out.println("プログラム終了");
 						return;
 
@@ -84,15 +84,15 @@ public class JapaneseTheaterUI {
 
 				} else {
 
-					// ログインの失敗の場合
+					// 로그인 실패할 경우
 					System.out.println("ログイン失敗");
 
-					// 上のメニューに戻る
+					// 상위 메뉴로 돌아감
 					break;
 
 				}
 
-				// ノンメンバーの予約の場合
+				// 비회원 예약일 경우
 			case 2:
 				System.out.println("=====================================");
 				System.out.println("===============ノンメンバー の予約 ==============");
@@ -110,13 +110,13 @@ public class JapaneseTheaterUI {
 
 				break;
 
-			// メンバー登録の場合
+			// 회원 등록일 경우
 			case 3:
 				register();
 
 				break;
 
-			// 予約の確認の場合
+			// 예약 확인의 경우
 			case 4:
 				System.out.println("=======予約の確認=======");
 				System.out.println("1. メンバー");
@@ -129,18 +129,18 @@ public class JapaneseTheaterUI {
 
 				break;
 
-			// プログラム終了
+			// 프로그램 종료
 			case 9:
 				System.out.println("プログラムを終了します。");
 				System.exit(0);
 
-			}// スイッチエンド
+			}// switch 끝
 
-		} // whileループエンド
+		} // while 끝
 
-	}// startUIメソッドエンド
+	}// startUI메소드 끝
 
-	// 映画予約プログラムの基本ユーザーインターフェース
+	// 영화 예약 프로그램의 기본 유저 인터페이스
 	public void printMainUI() {
 
 		System.out.println("=====================================");
@@ -156,7 +156,7 @@ public class JapaneseTheaterUI {
 
 	}
 
-	// 映画館の選択のユーザーインターフェース
+	// 영화관 선택하는 유저 인터페이스
 	public void printSelectDistrictUI() {
 
 		System.out.println("=====================================");
@@ -170,19 +170,19 @@ public class JapaneseTheaterUI {
 
 	}
 
-	// 座席を選択するユーザーインターフェース
+	// 좌석 선택의 유저 인터페이스
 	public String printSelectSeatUI(List<SeatInfo> sList, String theaterName) {
 
 		System.out.println("=====================================");
 		System.out.println("================席を選択==============");
 
-		// 空いている席を"□"の形に設定
+		// 비어있는 좌석을"□"의 형태로 설정
 		String[][] seats = { { "□", "□", "□", "□", "□", "□", "□", "□", "□", "□" },
 				{ "□", "□", "□", "□", "□", "□", "□", "□", "□", "□" },
 				{ "□", "□", "□", "□", "□", "□", "□", "□", "□", "□" },
 				{ "□", "□", "□", "□", "□", "□", "□", "□", "□", "□" } };
 
-		// 映画館によって座席情報をリストに入れる
+		// 영화관마다의 좌석정보를 리스트에 넣음
 		if (theaterName.contains("부천"))
 			sList = dao.getBucheonSeatsInfo();
 		else if (theaterName.contains("인천"))
@@ -196,8 +196,8 @@ public class JapaneseTheaterUI {
 		String seatColumn = " ";
 		String booking = " ";
 
-		// 全ての座席を区別するために
-		String row[] = { "a", "b", "c", "d" }; // a b c d
+		// 모든 좌석을 구분하기 위해
+		String row[] = { "a", "b", "c", "d" }; 
 		String column[] = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10" };
 
 		System.out.println(seatRow + " " + seatColumn + " " + booking);
@@ -214,20 +214,20 @@ public class JapaneseTheaterUI {
 					if (seatRow.equals(row[i]) && seatColumn.equals(column[j])) {
 
 						if (booking.equals("예약가능")) {
-							// 座席を予約できる場合
+							// 예약 가능한 좌석일 경우
 							seats[i][j] = "□";
 						} else {
-							// 座席を予約できない場合
+							// 예약 불가능한 좌석일 경우
 							seats[i][j] = "■";
 						}
 					}
 				}
 
-			} // インナーforループエンド
+			} // inner for 끝
 
-		} // アウターforループエンド
+		} // outer for 끝
 
-		// 映画の現在の座席情報を見るために
+		// 영화의 현재 좌석정보를 보기 위해
 		for (int seatNum = 1; seatNum <= 10; seatNum++) {
 
 			if (seatNum == 10) {
@@ -256,8 +256,8 @@ public class JapaneseTheaterUI {
 			System.out.println();
 		}
 
-		// 座席を選択の場合
-		// 座席のローの名とカラムの名をつけて入力しなければならない
+		// 좌석을 선택할 경우
+		// 좌석의 행, 열의 이름을 붙여서 입력해야만 한다
 		System.out.print("席を選択してください(ex a01): ");
 		String seatSelect = sc.next();
 		sc.nextLine();
@@ -269,9 +269,9 @@ public class JapaneseTheaterUI {
 
 		return seatSelect;
 
-	}// printSelectSeatUIメソッドエンド
+	}// printSelectSeatUI메소드 끝
 
-	// 座席情報のアップデート
+	// 좌석정보 업데이트
 	public void updateSeatsInfo(String theaterName, String booking, String[][] seats, String[] row, String[] column,
 			String inputRow, String inputColumn) {
 		int indexI = 0;
@@ -280,7 +280,7 @@ public class JapaneseTheaterUI {
 		SeatInfo s = new SeatInfo();
 		s.setSeats(inputRow + inputColumn);
 
-		// プチョン映画館の場合
+		// 부천 영화관일 경우
 		if (theaterName.contains("부천")) {
 			for (int i = 0; i < row.length; i++) {
 				for (int j = 0; j < column.length; j++) {
@@ -296,9 +296,9 @@ public class JapaneseTheaterUI {
 
 				if (s.getSeats().equals(sList.get(index).getSeats())) {
 
-					// 予約できる場合
+					// 예약 가능할 경우
 					if (sList.get(index).getBookingInfo().equals("예약가능")) {
-						// 座席を予約して"■"で変更する
+						// 좌석을 예약하고 "■"으로 변경
 						seats[indexI][indexJ] = "■";
 						dao.updateBucheonBookingInfo(inputRow.concat(inputColumn));
 
@@ -307,10 +307,10 @@ public class JapaneseTheaterUI {
 					}
 				}
 
-			} // forループエンド
-		} // アウターifエンド
+			} // for 끝
+		} // outer if 끝
 
-		// インチョン映画館の場合
+		// 인천 영화관일 경우
 		if (theaterName.contains("인천")) {
 			for (int i = 0; i < row.length; i++) {
 				for (int j = 0; j < column.length; j++) {
@@ -335,10 +335,10 @@ public class JapaneseTheaterUI {
 					}
 				}
 
-			} // forループエンド
-		} // アウターifエンド
+			} // for 끝
+		} // outer if 끝
 
-		// ヨンサン映画館の場合
+		// 용산 영화관일 경우
 		if (theaterName.contains("용산")) {
 			for (int i = 0; i < row.length; i++) {
 				for (int j = 0; j < column.length; j++) {
@@ -362,10 +362,10 @@ public class JapaneseTheaterUI {
 					}
 				}
 
-			} // forループエンド
-		} // アウターifエンド
+			} // for 끝
+		} // outer if 끝
 
-		// ワンシムニ映画館の場合
+		// 왕십리 영화관일 경우
 		if (theaterName.contains("왕십리")) {
 			for (int i = 0; i < row.length; i++) {
 				for (int j = 0; j < column.length; j++) {
@@ -389,17 +389,17 @@ public class JapaneseTheaterUI {
 					}
 				}
 
-			} // forループエンド
-		} // アウターifエンド
+			} // for 끝
+		} // outer if 끝
 
-	}// updateSeatsInfoメソッドエンド
+	}// updateSeatsInfo메소드 끝
 
-	// メンバー別の映画おすすめ
+	// 회원별 영화 추천
 	public void recommendMovie(String id) {
 
 		System.out.println("========= " + id + "のお客さまにおすすめ映画===========");
 
-		// メンバー別の予約した情報をリストに入れる
+		// 회원별 예약한 정보를 리스트에 넣음
 		List<Reservation> rList = dao.idReservationInfo(id);
 
 		String genre = " ";
@@ -409,11 +409,11 @@ public class JapaneseTheaterUI {
 		for (int index = 0; index < rList.size(); index++) {
 			for (int g = 0; g < genres.length; g++) {
 				/*
-				 * genresアレイの中のことと リストのジャンルがマッチングすれば
+				 * genres배열중에 rList와 일치하는게 있다면
 				 */
 				if (genres[g].equals(rList.get(index).getGenre())) {
 					/*
-					 * その時のgenres配列のインデックスと同じインデックスにある check配列の値を増加させる
+					 * 이 때의 genres배열의 index와 같은 index에 있는 check배열의 값을 증가시킴
 					 */
 					check[g]++;
 				}
@@ -430,24 +430,24 @@ public class JapaneseTheaterUI {
 			}
 		}
 
-		// 一番多くカウントされたジャンルを保存する
+		// 가장 많이 카운트 된 장르를 저장함
 		genre = genres[index];
 
-		// ジャンルが同じ映画情報をリストに入れる
+		// 장르가 같은 영화정보를 리스트에 넣음
 		mList = dao.getMovieRecommend(genre);
 
 		for (Movie m : mList) {
 			System.out.println(m);
 		}
 
-	}// recommendMovieメソッドエンド
-
-	// 予約の情報
+	}// recommendMovie메소드 끝
+	
+	// 예약 정보
 	public void getReservationInfo(int choice) {
 
 		List<Reservation> rList = dao.reservationInfo();
 
-		// メンバーの場合
+		// 회원일 경우
 		if (choice == 1) {
 
 			while (true) {
@@ -460,7 +460,7 @@ public class JapaneseTheaterUI {
 				String pw = sc.next();
 				sc.nextLine();
 
-				// ログイン成功の場合
+				// 로그인 성공할 경우
 				if (checkLogin(id, pw) == true) {
 
 					System.out.println("ログイン成功");
@@ -471,7 +471,7 @@ public class JapaneseTheaterUI {
 					int menu = sc.nextInt();
 					sc.nextLine();
 
-					// 予約の確認 or キャンセル
+					// 예약 확인 or 취소
 					if (menu == 1) {
 						int index = 0;
 						for (index = 0; index < rList.size(); index++) {
@@ -489,7 +489,7 @@ public class JapaneseTheaterUI {
 						System.out.println("キャンセルできました。");
 
 					} else {
-						// ログイン失敗の場合
+						// 로그인 실패할 경우
 						System.out.println("ログイン 失敗");
 						return;
 					}
@@ -497,10 +497,10 @@ public class JapaneseTheaterUI {
 				} else
 					break;
 
-			} // whileループエンド
+			} // while 끝
 
 		} else {
-			// ノンメンバーの場合
+			// 비회원일 경우
 			while (true) {
 
 				System.out.print("email: ");
@@ -521,13 +521,13 @@ public class JapaneseTheaterUI {
 				dao.deleteReservedTicket(c);
 				System.out.println("キャンセルできました。");
 
-			} // whileループエンド
+			} // while 끝
 
-		} // elseエンド
+		} // else 끝
 
-	}// getReservationInfoメソッドエンド
+	}// getReservationInfo메소드 끝
 
-	// 脱退
+	// 탈퇴
 	public void withdrawal(String id) {
 
 		int count = 0;
@@ -549,7 +549,7 @@ public class JapaneseTheaterUI {
 				count++;
 
 				if (count == 3) {
-					// パスワードが3回違うと上に戻る
+					// 비밀번호가 3회 다르면 위로 돌아감
 					System.out.println("パスワード 3回間違いました, 上に戻る");
 					break;
 				}
@@ -557,11 +557,11 @@ public class JapaneseTheaterUI {
 				System.out.println("パスワード 3回間違いました。 また、パスワードを 入力してください。");
 			}
 
-		} // whileループエンド
+		} // while 끝
 
-	}// withdrawalメソッドエンド
+	}// withdrawal메소드 끝
 
-	// メンバー登録
+	// 회원 등록
 	public void register() {
 
 		TheaterMember tm = new TheaterMember();
@@ -576,7 +576,7 @@ public class JapaneseTheaterUI {
 			id = sc.next();
 			sc.nextLine();
 
-			// idがもうある場合
+			// id가 이미 있을 경우
 			if (checkId(id) == true) {
 
 				System.out.println("もう存在しているidです。");
@@ -588,7 +588,7 @@ public class JapaneseTheaterUI {
 				break;
 
 			}
-		} // whileループエンド
+		} // while 
 
 		System.out.print("pw: ");
 		String pw = sc.next();
@@ -616,14 +616,14 @@ public class JapaneseTheaterUI {
 
 		System.out.println(tm);
 
-	}// registerメソッドエンド
+	}// register메소드 끝
 
-	// 予約
+	// 예약
 	public void reservation(int select) {
 
 		while (true) {
 
-			// 映画館を選択
+			// 영화관 선택
 			printSelectDistrictUI();
 
 			int selectDistrict = sc.nextInt();
@@ -633,9 +633,9 @@ public class JapaneseTheaterUI {
 
 			case 1:
 				if (select == 1)
-					memberSelectMovie(selectDistrict); // メンバーの予約
+					memberSelectMovie(selectDistrict); // 회원 예약
 				else
-					nonMemberSelectMovie(selectDistrict); // ノンメンバーの予約
+					nonMemberSelectMovie(selectDistrict); // 비회원 예약
 
 				break;
 
@@ -666,19 +666,19 @@ public class JapaneseTheaterUI {
 			case 9:
 				return;
 
-			}// スイッチエンド
+			}// switch 끝
 
-		} // whileループエンド
+		} // while 끝
 
-	}// reservationメソッドエンド
+	}// reservation메소드 끝
 
-	// メンバーの場合の映画選択
+	// 회원일 경우 영화 선택
 	public void memberSelectMovie(int selectDistrict) {
 
 		List<TheaterMember> tList = dao.getTheaterMemberInfo();
 		Reservation r = null;
 
-		// 映画館別の映画選択
+		// 영화관별 영화 선택
 		switch (selectDistrict) {
 
 		case 1:
@@ -717,18 +717,18 @@ public class JapaneseTheaterUI {
 
 			break;
 
-		}// スイッチエンド
+		}// switch 끝
 
-	}// memberSelectMovieメソッドエンド
+	}// memberSelectMovie메소드 끝
 
-	// ノンメンバーの場合の映画選択
+	// 비회원일 경우 영화 선택
 	public void nonMemberSelectMovie(int selectDistrict) {
 
 		List<Movie> mList = null;
 		List<SeatInfo> sList = null;
 		Reservation r = null;
 
-		// 映画館別の映画選択
+		// 영화관별 영화 
 		switch (selectDistrict) {
 
 		case 1:
@@ -767,11 +767,11 @@ public class JapaneseTheaterUI {
 
 			break;
 
-		}// スイッチエンド
+		}// switch 끝
 
-	}// nonMemberSelectMovieメソッドエンド
+	}// nonMemberSelectMovie메소드 끝
 
-	// メンバーの場合の映画予約
+	// 회원일 경우 영화 예약
 	public void memberReservationTheater(List<SeatInfo> sList, List<Movie> mList, List<TheaterMember> tmList,
 			Reservation r) {
 
@@ -799,15 +799,15 @@ public class JapaneseTheaterUI {
 
 		String seat = printSelectSeatUI(sList, theaterName);
 
-		// 映画の予約情報をデータベースに保存
+		// 영화 예약 정보를 데이터베이스에 저장
 		r = new Reservation(movieTitle, theaterName, seat, ticketPrice, id, email, genre);
 
 		dao.memberReserveTicket(r);
 
 		System.out.println(r);
-	}// memberReservationTheaterメソッドエンド
+	}// memberReservationTheater메소드 끝
 
-	// ノンメンバーの場合の映画予約
+	// 비회원일 경우 영화 예약
 	public void nonmemberReservationTheater(List<SeatInfo> sList, List<Movie> mList, Reservation r) {
 		for (int index = 0; index < mList.size(); index++) {
 			System.out.println((index + 1) + ". " + mList.get(index));
@@ -830,9 +830,9 @@ public class JapaneseTheaterUI {
 
 		System.out.println(r + "\nメールアドレス: " + email);
 
-	}// nonmemberReservationTheaterメソッドエンド
+	}// nonmemberReservationTheater메소드 끝
 
-	// ログインチェック
+	// 로그인 체크
 	public boolean checkLogin(String id, String pw) {
 
 		List<TheaterMember> tList = dao.getTheaterMemberInfo();
@@ -847,9 +847,9 @@ public class JapaneseTheaterUI {
 		}
 
 		return result;
-	}// checkLoginメソッドエンド
+	}// checkLogin메소드 끝
 
-	// idがもうあるかチェック
+	// 이미 등록된 id인지 체크
 	public boolean checkId(String id) {
 
 		List<TheaterMember> tList = dao.getTheaterMemberInfo();
@@ -863,5 +863,5 @@ public class JapaneseTheaterUI {
 		}
 
 		return result;
-	}// checkIdメソッドエンド
+	}// checkId메소드 끝
 }

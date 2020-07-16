@@ -157,6 +157,6 @@
 	<!-- 삭제 delete -->
 	<delete id="deleteMember">
 		DELETE theaterMember
-		WHERE id = #{id} <!-- idが固有値なので-->
+		WHERE id = #{id} <!-- id가 고유값 이므로-->
 	</delete>
 </mapper>

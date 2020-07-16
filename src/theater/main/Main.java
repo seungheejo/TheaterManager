@@ -12,8 +12,8 @@ public class Main {
 
 		while (true) {
 
-			// プログラムの初期画面
-			// 言語の選択
+			// 프로그램 초기화면
+			// 언어 선택
 			System.out.println("==============");
 			System.out.println("1. 한국어");
 			System.out.println("2. 일본어");
@@ -24,25 +24,25 @@ public class Main {
 
 			while (true) {
 
-				// UIが韓国語で提供
+				// UI가 한국어로 제공됨
 				if (select == 1) {
 					new KoreanTheaterUI().startUI();
 					sc.close();
 
-					// UIが日本語で提供
+					// UI가 일본어로 제공됨
 				} else if (select == 2) {
 					new JapaneseTheaterUI().startUI();
 					sc.close();
 
-					// 数字が１，２と違う場合
+					// 입력한 숫자가１，２가 아닐 경우
 				} else {
 					System.out.println("다시 선택해 주세요");
 					break;
 				}
 
-			} // インナーwhileループエンド
+			} // inner while 끝
 
-		} // アウターwhileループエンド
+		} // outer while 끝
 
 	}
 

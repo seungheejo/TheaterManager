@@ -72,7 +72,7 @@ public interface TheaterMapper {
 	// 모든 회원의 정보 select
 	public List<TheaterMember> getTheaterMemberInfo();
 
-	// 삭제 delete
+	// 탈퇴 delete
 	public int deleteMember(String id);
 
 }

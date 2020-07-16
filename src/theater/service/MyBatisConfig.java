@@ -9,11 +9,11 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 /*
  * 
- * DAO(data access object)クラス -> Mapperインターフェース->
- * Mapper XML -> DB SqlSessionを通じて 
- * JAVAからデータベースにクエリーを伝える 
+ * DAO(data access object)클래스 -> Mapper인터페이스 ->
+ * Mapper XML -> DB SqlSession을 통해 
+ * JAVA에서 부터 데이터베이스로 쿼리를 전달 
  *
- * MyBatisConfig.javaでデータベースのアクセス情報設定
+ * MyBatisConfig.java에서 데이터베이스 엑세스 정보 설정
  * 
  * */
 
@@ -24,7 +24,7 @@ public class MyBatisConfig {
 
 		if (sqlSessionFactory == null) {
 
-			// Mybatisの環境設定したファイルリード
+			// Mybatis의 환경설정한 파일을 읽음
 			String resource = "mybatis_config.xml";
 
 			try {

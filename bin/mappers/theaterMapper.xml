@@ -154,7 +154,7 @@
 		FROM theaterMember
 	</select>
 
-	<!-- 삭제 delete -->
+	<!-- 탈퇴 delete -->
 	<delete id="deleteMember">
 		DELETE theaterMember
 		WHERE id = #{id} <!-- id가 고유값 이므로-->
